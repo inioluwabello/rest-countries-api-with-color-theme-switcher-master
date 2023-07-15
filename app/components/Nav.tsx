@@ -11,6 +11,7 @@ export const Nav = ({ theme }: NavProps) => {
     const dispatch = useDispatch();
 
     const toggleTheme = (newTheme: string) => {
+        localStorage.setItem('theme', newTheme)
         dispatch(pageSlice.actions.setPageTheme(newTheme));
     }
 

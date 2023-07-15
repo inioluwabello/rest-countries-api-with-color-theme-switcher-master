@@ -1,14 +1,22 @@
 "use client";
 
 import { selectPageConfig, selectCountries, 
-    selectedCountry, useSelector, getAllCountries, useDispatch } from '@/lib/redux'
+    selectedCountry, useSelector, getAllCountries, useDispatch, pageSlice } from '@/lib/redux'
 import { Nav } from '../Nav'
 import { TopBar } from '../TopBar'
 import CountryList from './CountryList';
 import CountryDetails from './CountryDetails';
+import { useEffect } from 'react';
 
 export const Home = () => {
     const pageConfig = useSelector(selectPageConfig)
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        dispatch(pageSlice.actions.setPageTheme(savedTheme ?? pageConfig.theme))
+    })
+
+
     const countries = useSelector(selectCountries)
     const countrySelected = useSelector(selectedCountry)
     

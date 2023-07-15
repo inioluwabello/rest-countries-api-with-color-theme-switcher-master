@@ -4,7 +4,7 @@ import { filterByRegion, getAllCountries, searchByName } from './thunks'
 
 const initialState: PageSliceState = {
   config: {
-    theme: ((window.localStorage.getItem('theme')) as 'Light' | 'Dark') ?? 'Light'
+    theme: 'Light'
   },
   searchValue: '',
   region: '',

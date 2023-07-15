@@ -3,7 +3,10 @@ import { ICountry, pageSlice, useDispatch } from "@/lib/redux";
 const CountryList = ({ countries }: any) => {
     const dispatch = useDispatch();
     const numberOfRows = Math.ceil(countries.length / 4);
-    console.log(countries)
+
+    const selectCountry = (country: ICountry) => {
+        dispatch(pageSlice.actions.selectCountry(country as ICountry))
+    }
 
     const renderRows = () => {
         const rows = [];
@@ -17,19 +20,8 @@ const CountryList = ({ countries }: any) => {
             rows.push(
                 <div key={`row-${i}`} className={`row ${isLastRow ? 'flex last-row' : 'space-between'}`}>
                     {rowItems.map((country: any, index: number) => (
-
-                        // {
-                        //     capital: country.capital,
-                        //     currencies: country.currencies,
-                        //     languages: country.languages,
-                        //     nativeName: country.nativeName,
-                        //     population: country.population,
-                        //     region: country.region,
-                        //     subRegion: country.subRegion,
-                        //     topLevelDomain: country.topLevelDomain
-                        // }
                         <div key={index} className="country-item column"
-                            onClick={() => dispatch(pageSlice.actions.selectCountry(country as ICountry))}>
+                            onClick={() => selectCountry(country)}>
                             <div className='country-image'>
                                 <img src={country.flags.svg} alt={country.name.common} />
                             </div>
@@ -38,7 +30,7 @@ const CountryList = ({ countries }: any) => {
 
                                 <div className="population text-sm">
                                     <span className="medium-text">Population:</span>{" "}
-                                    {country.population}
+                                    {country.population.toLocaleString('en-US', { maximumFractionDigits: 0 })}
                                 </div>
                                 <div className="region text-sm">
                                     <span className="medium-text">Region:</span>{" "}

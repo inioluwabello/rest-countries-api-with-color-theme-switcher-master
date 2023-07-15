@@ -130,7 +130,16 @@ a {
   border-radius: 5px;
   cursor: pointer;
 }
-.theme-selector-btn:hover {
+.back {
+  border: 0;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 3px 2px rgb(0 0 0 / 6.5%);
+  background: #fff;
+}
+.theme-selector-btn:hover, 
+.back:hover {
   background: rgb(0 0 0 / 6.5%) !important;
 }
 .dark-theme,
@@ -148,8 +157,13 @@ a {
   color: rgba(0 0 0 / 30%);
 }
 .dark-theme svg,
-.dark-theme .theme-selector-btn {
+.dark-theme .theme-selector-btn,
+.dark-theme .back,
+.dark-theme .content-details {
   color: #ffffff;
+}
+.dark-theme .back {
+  background: hsl(209, 23%, 22%);
 }
 .main-bg {
   padding-bottom: 3em;
@@ -164,15 +178,50 @@ a {
   left: 0;
   width: 100%;
   padding: 1em 2em;
+  z-index: 1;
 }
 .top-bar {
-  padding: 2em;
   padding-top: 6em;
+  padding-bottom: 2em;
+}
+.details-page {
+  padding-top: 6em;
+}
+.action-tab{
+  padding-top: 1em;
+  padding-bottom: 3em;
 }
 main {
   padding: 0 2em;
 }
+.details > div {
+  margin-bottom: .5em;
+}
+.half-width>img {
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 16px rgb(0 0 0 / 6.5%);
+}
+.half-width>.name {
+  padding: 2em 1em 1em;
+}
+.half-width {
+  width: calc(50% - 2em)
+}
 @media (max-width: 1200px) {
+  .detail-split,
+  .content-details {
+    display: block;
+  }
+  .half-width {
+    width: 100%;
+  }
+  .half-width:first-of-type > .details {
+    margin-top: -2em;
+  }
+  .half-width > .name {
+    margin-top: 1em;
+  }
   .filter-bar {
     text-align: left;
   }

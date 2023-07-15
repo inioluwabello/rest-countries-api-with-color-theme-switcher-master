@@ -1,15 +1,22 @@
 /* Instruments */
 import { createAppAsyncThunk } from '@/lib/redux/createAppAsyncThunk'
-import { searchCountriesByName } from './searchCountriesByName'
-import { filterCountriesByRegion } from './filterCountriesByRegion'
+import { filterCountriesByRegion, searchCountriesByName, getCountryList } from './apiFunctions'
+
+export const getAllCountries = createAppAsyncThunk(
+  'page/getAllCountries',
+  async () => {
+    const response = await getCountryList()
+    return response
+  }
+)
 
 export const searchByName = createAppAsyncThunk(
-    'page/searchByName',
-    async (name: string) => {
-      const response = await searchCountriesByName(name)
-      return response
-    }
-  )
+  'page/searchByName',
+  async (name: string) => {
+    const response = await searchCountriesByName(name)
+    return response
+  }
+)
 
 export const filterByRegion = createAppAsyncThunk(
   'page/filterByRegion',

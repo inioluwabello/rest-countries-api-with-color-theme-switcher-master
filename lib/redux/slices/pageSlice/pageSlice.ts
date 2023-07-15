@@ -1,12 +1,12 @@
 /* Core */
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { filterByRegion, searchByName } from './thunks'
+import { filterByRegion, getAllCountries, searchByName } from './thunks'
 
 const initialState: PageSliceState = {
   config: {
     theme: ((localStorage.getItem('theme')) as 'Light' | 'Dark') ?? 'Light'
   },
-  searchValue: 'anta',
+  searchValue: '',
   region: '',
   countries: [],
   selectedCountry: null,
@@ -32,11 +32,20 @@ export const pageSlice = createSlice({
     },
     selectCountry: (state, action: PayloadAction<ICountry>) => {
       state.selectedCountry = action.payload;
-      console.log(state.selectedCountry);
+    },
+    unselectCountry: (state) => {
+      state.selectedCountry = null
     }
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getAllCountries.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(getAllCountries.fulfilled, (state, action: PayloadAction<any>) => {
+        state.status = 'idle'
+        state.countries = action.payload
+      })
       .addCase(searchByName.pending, (state) => {
         state.status = 'loading'
       })
@@ -49,7 +58,6 @@ export const pageSlice = createSlice({
       })
       .addCase(filterByRegion.fulfilled, (state, action: PayloadAction<any>) => {
         state.status = 'idle'
-        console.log(action)
         state.countries = action.payload
       })
   },
@@ -66,14 +74,18 @@ export interface PageSliceState {
 }
 
 export interface ICountry {
-  name: object,
+  subregion: string
+  tld: any
+  continents: any
+  name: any,
   population: number,
   region: string,
   subRegion: string,
   capital: string[],
   topLevelDomain: string,
-  currencies: object,
-  languages: object
+  currencies: any,
+  languages: any,
+  flags: any
 }
 
 export interface IPage {

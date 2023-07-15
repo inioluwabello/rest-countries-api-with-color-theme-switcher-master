@@ -1,7 +1,7 @@
 /* Instruments */
 import { createAppAsyncThunk } from '@/lib/redux/createAppAsyncThunk'
 import { fetchIdentityCount } from './fetchIdentityCount'
-import { selectCount } from './selectors'
+// import { selectCount } from './selectors'
 import { counterSlice } from './counterSlice'
 import type { ReduxThunkAction } from '@/lib/redux'
 
@@ -22,12 +22,12 @@ export const incrementAsync = createAppAsyncThunk(
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
-export const incrementIfOddAsync =
-  (amount: number): ReduxThunkAction =>
-  (dispatch, getState) => {
-    const currentValue = selectCount(getState())
+// export const incrementIfOddAsync =
+//   (amount: number): ReduxThunkAction =>
+//   (dispatch, getState) => {
+//     const currentValue = selectCount(getState())
 
-    if (currentValue % 2 === 1) {
-      dispatch(counterSlice.actions.incrementByAmount(amount))
-    }
-  }
+//     if (currentValue % 2 === 1) {
+//       dispatch(counterSlice.actions.incrementByAmount(amount))
+//     }
+//   }

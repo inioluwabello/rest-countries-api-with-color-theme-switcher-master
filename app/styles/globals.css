@@ -16,3 +16,163 @@ a {
 * {
   box-sizing: border-box;
 }
+.text-sm {
+  font-size: 14px;
+}
+.text-md {
+  font-size: 16px;
+}
+.text-lg {
+  font-size: 20px;
+}
+.regular-text {
+  font-weight: 300;
+}
+.medium-text {
+  font-weight: 600;
+}
+.bold-text {
+  font-weight: 800;
+}
+.mb-1{
+  margin-bottom: 1em;
+}
+.mb-2{
+  margin-bottom: 2em;
+}
+.dark-blue {
+  color: hsl(209, 23%, 22%);
+}
+.very-dark-blue {
+  background: hsl(207, 26%, 17%);
+}
+.very-dark-blue-light {
+  color: hsl(200, 15%, 8%);
+}
+.dark-grey {
+  color: hsl(0, 0%, 98%);
+}
+.white {
+  color: #ffffff;
+}
+.white-bg {
+  background-color: #ffffff;
+}
+.flex {
+  display: flex;
+}
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.row {
+  margin-bottom: 3em;
+}
+.country-item {
+  width: calc(25% - 50px);;
+  max-width: 100%;
+  box-shadow: 0 0 3px 4px rgb(0 0 0 / 6.5%);
+  border-radius: 5px;
+  margin-right: 30px;
+}
+.country-item:last-of-type {
+  margin-right: unset;
+}
+.country-image {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+.country-image > img {
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+.container {
+  width: 100%;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+.details {
+  padding: 1em;
+}
+.navbar {
+  padding: 1em;
+  box-shadow: 0 0 3px 2px rgb(0 0 0 / 6.5%);
+  min-width: 1200px;
+}
+.top-bar {
+  padding: 1.5em 0;
+}
+.w-100 {
+  width: 100%;
+}
+
+.search-bar {
+  width: 40%;
+}
+.search-bar>svg {
+  position: relative;
+  top: -30px;
+  left: 1.3em;
+}
+.filter-bar {
+  width: 30%;
+  text-align: right;
+}
+.filter-select, .search-input {
+  padding: 1em;
+  border: none;
+  box-shadow: 0 0 3px 2px rgb(0 0 0 / 6.5%);
+  border-radius: 5px;
+  outline: 0;
+}
+.search-input {
+  padding-left: 3.5em;
+}
+.page-title {
+  padding-top: 0.2em;
+}
+.theme-selector-btn {
+  background: transparent;
+  border: 0;
+  padding: 0.5em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.theme-selector-btn:hover {
+  background: rgb(0 0 0 / 6.5%) !important;
+}
+.main-bg {
+  height: 100vh;
+  overflow: auto;
+  background-color: hsl(0, 0%, 98%);
+}
+.dark-theme,
+.dark-theme > .header > .navbar {
+  background-color: hsl(207, 26%, 17%) !important;
+}
+.dark-theme > .header > .navbar,
+.dark-theme .country-item,
+.dark-theme .search-input,
+.dark-theme .filter-select {
+  background-color: hsl(209, 23%, 22%) !important;
+  color: #ffffff;
+}
+.light-theme svg {
+  color: rgba(0 0 0 / 30%);
+}
+.dark-theme svg,
+.dark-theme .theme-selector-btn {
+  color: #ffffff;
+}
+
+@media (max-width: 1000px) {
+  .filter-bar {
+    text-align: left;
+  }
+}

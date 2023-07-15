@@ -4,7 +4,7 @@ import { filterByRegion, getAllCountries, searchByName } from './thunks'
 
 const initialState: PageSliceState = {
   config: {
-    theme: ((localStorage.getItem('theme')) as 'Light' | 'Dark') ?? 'Light'
+    theme: ((window.localStorage.getItem('theme')) as 'Light' | 'Dark') ?? 'Light'
   },
   searchValue: '',
   region: '',
@@ -19,7 +19,7 @@ export const pageSlice = createSlice({
   reducers: {
     setPageTheme: (state, action: PayloadAction<string>) => {
       state.config.theme = action.payload as 'Light' | 'Dark'
-      localStorage.setItem('theme', action.payload);
+      window.localStorage.setItem('theme', action.payload);
     },
     setSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload

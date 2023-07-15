@@ -188,6 +188,7 @@ main {
   .country-item {
     margin-top: 2em;
     width: 100%;
+    cursor: pointer;
   }
   .country-item:first-of-type {
     margin-top: unset;

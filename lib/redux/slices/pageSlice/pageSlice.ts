@@ -4,11 +4,12 @@ import { filterByRegion, searchByName } from './thunks'
 
 const initialState: PageSliceState = {
   config: {
-    theme: 'Light'
+    theme: ((localStorage.getItem('theme')) as 'Light' | 'Dark') ?? 'Light'
   },
   searchValue: 'anta',
   region: '',
   countries: [],
+  selectedCountry: null,
   status: 'idle',
 }
 
@@ -18,6 +19,7 @@ export const pageSlice = createSlice({
   reducers: {
     setPageTheme: (state, action: PayloadAction<string>) => {
       state.config.theme = action.payload as 'Light' | 'Dark'
+      localStorage.setItem('theme', action.payload);
     },
     setSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload
@@ -27,6 +29,10 @@ export const pageSlice = createSlice({
     },
     setCountry: (state, action) => {
       state.countries = action.payload
+    },
+    selectCountry: (state, action: PayloadAction<ICountry>) => {
+      state.selectedCountry = action.payload;
+      console.log(state.selectedCountry);
     }
   },
   extraReducers: (builder) => {
@@ -54,8 +60,20 @@ export interface PageSliceState {
   config: IPage,
   countries: any,
   searchValue: string,
+  selectedCountry: ICountry | null,
   region: string,
   status: 'idle' | 'loading' | 'failed'
+}
+
+export interface ICountry {
+  name: object,
+  population: number,
+  region: string,
+  subRegion: string,
+  capital: string[],
+  topLevelDomain: string,
+  currencies: object,
+  languages: object
 }
 
 export interface IPage {

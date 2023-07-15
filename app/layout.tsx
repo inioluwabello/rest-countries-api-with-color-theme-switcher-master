@@ -10,7 +10,7 @@ export default function RootLayout(props: React.PropsWithChildren) {
       <html lang="en">
         <body>
           <section className=''>
-            <main>{props.children}</main>
+            {props.children}
           </section>
         </body>
       </html>

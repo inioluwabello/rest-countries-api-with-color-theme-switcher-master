@@ -6,7 +6,7 @@ const initialState: PageSliceState = {
   config: {
     theme: 'Light'
   },
-  searchValue: 'ant',
+  searchValue: 'anta',
   region: '',
   countries: [],
   status: 'idle',

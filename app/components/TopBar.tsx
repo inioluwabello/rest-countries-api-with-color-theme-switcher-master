@@ -38,7 +38,7 @@ export const TopBar = () => {
     return (
         <div className="top-bar">
             <div className="container">
-                <div className="space-between">
+                <div className="content space-between">
                     <div className="search-bar">
                         <input type="text" 
                             className="search-input white-bg w-100" 
